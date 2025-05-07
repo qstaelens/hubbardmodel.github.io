@@ -9,15 +9,72 @@
       max-width: 800px;
       margin: 2em auto;
       padding: 1em;
+      background-color: #f0f0f5;
     }
-    h1 {
-      color: darkblue;
+    h1, h2 {
+      color: #003366;
+    }
+    section {
+      background: white;
+      padding: 1em;
+      margin-bottom: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    pre {
+      background-color: #eee;
+      padding: 0.5em;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 0.5em;
+      margin-right: 0.5em;
+    }
+    button {
+      padding: 0.5em 1em;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Hubbard model</h1>
-  <p>This site is dedicated to the Hubbard model and its role in condensed matter physics.</p>
-  <p>More content coming soon!</p>
+
+  <h1>Welcome to the Hubbard Model Explorer</h1>
+
+  <section>
+    <h2>1. The Hubbard Model</h2>
+    <p>The Hubbard model was introduced by <strong>John Hubbard</strong> in 1963 to describe the behavior of electrons in a lattice, especially their interaction and collective motion. It is a cornerstone in the study of strongly correlated electron systems.</p>
+    <p>The model captures two key physical effects: the kinetic energy of electrons hopping between sites and the on-site Coulomb repulsion when two electrons occupy the same site.</p>
+    <p>The Hamiltonian of the Hubbard model is:</p>
+    <pre>
+H = -t ∑⟨i,j⟩,σ (c†<sub>iσ</sub> c<sub>jσ</sub> + h.c.) + U ∑<sub>i</sub> n<sub>i↑</sub> n<sub>i↓</sub>
+    </pre>
+    <ul>
+      <li><strong>t</strong>: Hopping parameter (kinetic term)</li>
+      <li><strong>U</strong>: On-site Coulomb repulsion</li>
+      <li><strong>c†<sub>iσ</sub></strong>, <strong>c<sub>jσ</sub></strong>: Creation and annihilation operators</li>
+      <li><strong>n<sub>iσ</sub></strong>: Number operator for electrons with spin σ at site i</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Search for Material Parameters</h2>
+    <p>Type a material name below to search for its Hubbard model parameters (e.g. t, U). Functionality will be added later.</p>
+    <input type="text" placeholder="Enter material name..." />
+    <button>Search</button>
+    <p><em>Search feature coming soon.</em></p>
+  </section>
+
+  <section>
+    <h2>3. Computed Results</h2>
+    <p>Once parameters are loaded, the following properties will be computed and displayed:</p>
+    <ul>
+      <li>Ground state energy</li>
+      <li>Staggered magnetization</li>
+      <li>Phase of the system (e.g., metallic, Mott insulator)</li>
+    </ul>
+    <p><em>Results will appear here once parameters are provided.</em></p>
+  </section>
+
 </body>
 </html>
