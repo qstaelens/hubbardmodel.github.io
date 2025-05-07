@@ -21,11 +21,13 @@
       border-radius: 8px;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
-    pre {
+    .math {
+      font-size: 1.1em;
       background-color: #eee;
       padding: 0.5em;
       border-radius: 5px;
       overflow-x: auto;
+      white-space: nowrap;
     }
     input[type="text"] {
       width: 70%;
@@ -36,6 +38,8 @@
       padding: 0.5em 1em;
     }
   </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -45,23 +49,24 @@
     <h2>1. The Hubbard Model</h2>
     <p>The Hubbard model was introduced by <strong>John Hubbard</strong> in 1963 to describe the behavior of electrons in a lattice, especially their interaction and collective motion. It is a cornerstone in the study of strongly correlated electron systems.</p>
     <p>The model captures two key physical effects: the kinetic energy of electrons hopping between sites and the on-site Coulomb repulsion when two electrons occupy the same site.</p>
-    <p>The Hamiltonian of the Hubbard model is:</p>
-    <pre>
-H = -t ∑⟨i,j⟩,σ (c†<sub>iσ</sub> c<sub>jσ</sub> + h.c.) + U ∑<sub>i</sub> n<sub>i↑</sub> n<sub>i↓</sub>
-    </pre>
+    <div class="math">
+      \( H = -t \sum_{\langle i,j \rangle, \sigma} \left( c^\dagger_{i\sigma} c_{j\sigma} + \text{h.c.} \right) + U \sum_i n_{i\uparrow} n_{i\downarrow} \)
+    </div>
     <ul>
       <li><strong>t</strong>: Hopping parameter (kinetic term)</li>
       <li><strong>U</strong>: On-site Coulomb repulsion</li>
-      <li><strong>c†<sub>iσ</sub></strong>, <strong>c<sub>jσ</sub></strong>: Creation and annihilation operators</li>
-      <li><strong>n<sub>iσ</sub></strong>: Number operator for electrons with spin σ at site i</li>
+      <li><strong>\( c^\dagger_{i\sigma}, c_{j\sigma} \)</strong>: Creation and annihilation operators</li>
+      <li><strong>\( n_{i\sigma} \)</strong>: Number operator for electrons with spin σ at site i</li>
     </ul>
     <p>One can also use the extended Hubbard Hamiltonian, it is given by:</p>
-    <pre>
-H = -∑<sub>i,s,j=1,2</sub> t<sub>j</sub>(c†<sub>i,s</sub> c<sub>i+j,s</sub> + h.c.)
-    + U ∑<sub>i</sub> n<sub>i↑</sub> n<sub>i↓</sub>
-    + V ∑<sub>i</sub> n<sub>i</sub> n<sub>i+1</sub>
-    + K ∑<sub>i</sub> S⃗<sub>i</sub> · S⃗<sub>i+1</sub>
-    </pre>
+    <div class="math">
+      \[
+      H = -\sum_{i,s, j=1,2} t_j \left( c^\dagger_{i,s} c_{i+j,s} + \text{h.c.} \right)
+      + U \sum_i n_{i\uparrow} n_{i\downarrow}
+      + V \sum_i n_i n_{i+1}
+      + K \sum_i \vec{S}_i \cdot \vec{S}_{i+1}
+      \]
+    </div>
   </section>
 
   <section>
