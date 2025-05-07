@@ -82,7 +82,7 @@
     <p>Type a material name below to search for its Hubbard model parameters (e.g. t, U).</p>
     <input type="text" id="materialInput" placeholder="Enter material name..." />
     <button onclick="searchMaterial()">Search</button>
-    <p id="status"><em>Enter full name like Sr₂CuO₃</em></p>
+    <p id="status"><em>Enter full name like Sr2CuO3</em></p>
   
     <!-- Hidden data table -->
     <table id="material-data" style="display: none;">
@@ -95,13 +95,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>t</td><td>0.49</td><td>0.48</td><td>0.48</td></tr>
+        <tr><td>t_x</td><td>0.49</td><td>0.48</td><td>0.48</td></tr>
         <tr><td>U</td><td>3.56</td><td>3.14</td><td>2.97</td></tr>
         <tr><td>V</td><td>1.09</td><td>1.04</td><td>1.00</td></tr>
         <tr><td>K</td><td>-0.066</td><td>-0.077</td><td>-0.089</td></tr>
-        <tr><td>t₂</td><td>0.078</td><td>0.076</td><td>0.074</td></tr>
-        <tr><td>t_z</td><td>0.032</td><td>0.027</td><td>0.021</td></tr>
-        <tr><td>t_y</td><td>0.0069</td><td>-0.0028</td><td>-0.011</td></tr>
+        <tr><td>t<sub>2</sub></td><td>0.078</td><td>0.076</td><td>0.074</td></tr>
+        <tr><td>t<sub>z</sub></td><td>0.032</td><td>0.027</td><td>0.021</td></tr>
+        <tr><td>t<sub>y</sub></td><td>0.0069</td><td>-0.0028</td><td>-0.011</td></tr>
       </tbody>
     </table>
   
@@ -129,7 +129,7 @@
         });
   
         if (colIndex === -1) {
-          status.textContent = `Material "${input}" not found. Try e.g. Sr₂CuO₃.`;
+          status.textContent = `Material "${input}" not found. Try e.g. Sr2CuO3.`;
           return;
         }
   
