@@ -61,10 +61,10 @@
     <p>One can also use the extended Hubbard Hamiltonian, it is given by:</p>
     <div class="math">
       \[
-      H = -\sum_{i,s, j=1,2} t_j \left( c^\dagger_{i,s} c_{i+j,s} + \text{h.c.} \right)
+      H = -\sum_{\langle i,j \rangle, \sigma} t_ij \left( c^\dagger_{i\sigma} c_{j\sigma} + \text{h.c.} \right)
       + U \sum_i n_{i\uparrow} n_{i\downarrow}
-      + V \sum_i n_i n_{i+1}
-      + K \sum_i \vec{S}_i \cdot \vec{S}_{i+1}
+      + V \sum_{\langle i,j \rangle} n_i n_{j}
+      + K \sum_{\langle i,j \rangle} \vec{S}_i \cdot \vec{S}_{j}
       \]
     </div>
   </section>
