@@ -55,6 +55,13 @@ H = -t ∑⟨i,j⟩,σ (c†<sub>iσ</sub> c<sub>jσ</sub> + h.c.) + U ∑<sub>i
       <li><strong>c†<sub>iσ</sub></strong>, <strong>c<sub>jσ</sub></strong>: Creation and annihilation operators</li>
       <li><strong>n<sub>iσ</sub></strong>: Number operator for electrons with spin σ at site i</li>
     </ul>
+    <p>One can also use the extended Hubbard Hamiltonian, it is given by:</p>
+    <pre>
+H = -∑<sub>i,s,j=1,2</sub> t<sub>j</sub>(c†<sub>i,s</sub> c<sub>i+j,s</sub> + h.c.)
+    + U ∑<sub>i</sub> n<sub>i↑</sub> n<sub>i↓</sub>
+    + V ∑<sub>i</sub> n<sub>i</sub> n<sub>i+1</sub>
+    + K ∑<sub>i</sub> S⃗<sub>i</sub> · S⃗<sub>i+1</sub>
+    </pre>
   </section>
 
   <section>
