@@ -27,7 +27,7 @@
       padding: 0.5em;
       border-radius: 5px;
       overflow-x: auto;
-      white-space: nowrap;
+      white-space: normal;
     }
     input[type="text"] {
       width: 70%;
@@ -50,21 +50,29 @@
     <p>The Hubbard model was introduced by <strong>John Hubbard</strong> in 1963 to describe the behavior of electrons in a lattice, especially their interaction and collective motion. It is a cornerstone in the study of strongly correlated electron systems.</p>
     <p>The model captures two key physical effects: the kinetic energy of electrons hopping between sites and the on-site Coulomb repulsion when two electrons occupy the same site.</p>
     <div class="math">
-      \( H = -t \sum_{\langle i,j \rangle, \sigma} \left( c^\dagger_{i\sigma} c_{j\sigma} + \text{h.c.} \right) + U \sum_i n_{i\uparrow} n_{i\downarrow} \)
+      \[
+      H = -t \sum_{\langle i,j \rangle, \sigma} \left( c^\dagger_{i\sigma} c_{j\sigma} + \text{h.c.} \right) + U \sum_i n_{i\uparrow} n_{i\downarrow}
+      \]
     </div>
-    <ul>
-      <li><strong>t</strong>: Hopping parameter (kinetic term)</li>
-      <li><strong>U</strong>: On-site Coulomb repulsion</li>
-      <li><strong>\( c^\dagger_{i\sigma}, c_{j\sigma} \)</strong>: Creation and annihilation operators</li>
-      <li><strong>\( n_{i\sigma} \)</strong>: Number operator for electrons with spin σ at site i</li>
-    </ul>
-    <p>One can also use the extended Hubbard Hamiltonian, it is given by:</p>
     <div class="math">
       \[
-      H = -\sum_{\langle i,j \rangle, \sigma} t_ij \left( c^\dagger_{i\sigma} c_{j\sigma} + \text{h.c.} \right)
+      \begin{aligned}
+      &\text{where:} \\
+      &\begin{itemize}
+        \item t: \text{ Hopping parameter (kinetic term)} \\
+        \item U: \text{ On-site Coulomb repulsion} \\
+        \item c^\dagger_{i\sigma},\ c_{j\sigma}: \text{ Creation and annihilation operators} \\
+        \item n_{i\sigma}: \text{ Number operator for electrons with spin } \sigma \text{ at site } i
+      \end{itemize}
+      \]
+    </div>
+    <p>One can also use the extended Hubbard Hamiltonian, given by:</p>
+    <div class="math">
+      \[
+      H = -\sum_{\langle i,j \rangle, \sigma} t_{ij} \left( c^\dagger_{i\sigma} c_{j\sigma} + \text{h.c.} \right)
       + U \sum_i n_{i\uparrow} n_{i\downarrow}
-      + V \sum_{\langle i,j \rangle} n_i n_{j}
-      + K \sum_{\langle i,j \rangle} \vec{S}_i \cdot \vec{S}_{j}
+      + V \sum_{\langle i,j \rangle} n_i n_j
+      + K \sum_{\langle i,j \rangle} \vec{S}_i \cdot \vec{S}_j
       \]
     </div>
   </section>
@@ -80,11 +88,15 @@
   <section>
     <h2>3. Computed Results</h2>
     <p>Once parameters are loaded, the following properties will be computed and displayed:</p>
-    <ul>
-      <li>Ground state energy</li>
-      <li>Staggered magnetization</li>
-      <li>Phase of the system (e.g., metallic, Mott insulator)</li>
-    </ul>
+    <div class="math">
+      \[
+      \begin{itemize}
+        \item \text{Ground state energy}
+        \item \text{Staggered magnetization}
+        \item \text{Phase of the system (e.g., metallic, Mott insulator)}
+      \end{itemize}
+      \]
+    </div>
     <p><em>Results will appear here once parameters are provided.</em></p>
   </section>
 
