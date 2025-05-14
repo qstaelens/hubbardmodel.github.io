@@ -77,76 +77,51 @@
     </ul>
   </section>
 
-  <section>
-    <h2>2. Search for Material Parameters</h2>
-    <p>Type a material name below to search for its Hubbard model parameters (e.g. t, U).</p>
-    <input type="text" id="materialInput" placeholder="Enter material name..." />
-    <button onclick="searchMaterial()">Search</button>
-    <p id="status">Enter full name like Sr2CuO3</p>
-  
-    <!-- Hidden data table -->
-    <table id="material-data" style="display: none;">
-      <thead>
-        <tr>
-          <th>Quantity</th>
-          <th>Sr2CuO3</th>
-          <th>SrBaCuO3</th>
-          <th>Ba2CuO3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>t</td><td>0.49</td><td>0.48</td><td>0.48</td></tr>
-        <tr><td>U</td><td>3.56</td><td>3.14</td><td>2.97</td></tr>
-        <tr><td>V</td><td>1.09</td><td>1.04</td><td>1.00</td></tr>
-        <tr><td>K</td><td>-0.066</td><td>-0.077</td><td>-0.089</td></tr>
-        <tr><td>t<sub>2</sub></td><td>0.078</td><td>0.076</td><td>0.074</td></tr>
-        <tr><td>t<sub>z</sub></td><td>0.032</td><td>0.027</td><td>0.021</td></tr>
-        <tr><td>t<sub>y</sub></td><td>0.0069</td><td>-0.0028</td><td>-0.011</td></tr>
-      </tbody>
-    </table>
-  
-    <!-- Display result here -->
-    <div id="result"></div>
-  
-    <script>
-      function searchMaterial() {
-        const input = document.getElementById('materialInput').value.trim();
-        const table = document.getElementById('material-data');
-        const headers = table.querySelectorAll('thead th');
-        const rows = table.querySelectorAll('tbody tr');
-        const resultDiv = document.getElementById('result');
-        const status = document.getElementById('status');
-  
-        // Clear previous result
-        resultDiv.innerHTML = '';
-  
-        // Find matching column
-        let colIndex = -1;
-        headers.forEach((th, idx) => {
-          if (th.textContent.trim().toLowerCase() === input.toLowerCase()) {
-            colIndex = idx;
-          }
-        });
-  
-        if (colIndex === -1) {
-          status.textContent = `Material "${input}" not found. Try e.g. Sr2CuO3.`;
-          return;
-        }
-  
-        status.textContent = `Showing parameters for ${input}:`;
-  
-        // Create a result table
-        let html = '<table border="1" cellpadding="5"><tr><th>Quantity</th><th>' + input + '</th></tr>';
-        rows.forEach(row => {
-          const cells = row.querySelectorAll('td');
-          html += `<tr><td>${cells[0].innerHTML}</td><td>${cells[colIndex].textContent}</td></tr>`;
-        });
-        html += '</table>';
-  
-        resultDiv.innerHTML = html;
+ <section>
+  <h2>2. Search for Material Parameters</h2>
+  <p>Type a material name below to search for its Hubbard model parameters (e.g. t, U).</p>
+  <input type="text" id="materialInput" placeholder="Enter material name..." />
+  <button onclick="searchMaterial()">Search</button>
+  <p id="status">Enter full name like Sr2CuO3</p>
+
+  <!-- Display result here -->
+  <div id="result"></div>
+
+  <script>
+    // Store data as an object with each material as a key
+    const materialDatabase = {
+      "Sr2CuO3": { t: 0.49, U: 3.56, V: 1.09, K: -0.066, t2: 0.078, tz: 0.032, ty: 0.0069 },
+      "SrBaCuO3": { t: 0.48, U: 3.14, V: 1.04, K: -0.077, t2: 0.076, tz: 0.027, ty: -0.0028 },
+      "Ba2CuO3": { t: 0.48, U: 2.97, V: 1.00, K: -0.089, t2: 0.074, tz: 0.021, ty: -0.011 }
+      // Add more materials here as needed
+    };
+
+    function searchMaterial() {
+      const input = document.getElementById('materialInput').value.trim();
+      const resultDiv = document.getElementById('result');
+      const status = document.getElementById('status');
+      const data = materialDatabase[input];
+
+      resultDiv.innerHTML = '';
+
+      if (!data) {
+        status.textContent = `Material "${input}" not found. Try e.g. Sr2CuO3.`;
+        return;
       }
-    </script>
-  </section>
+
+      status.textContent = `Showing parameters for ${input}:`;
+
+      let html = '<table border="1" cellpadding="5"><tr><th>Quantity</th><th>Value</th></tr>';
+      for (const [key, value] of Object.entries(data)) {
+        html += `<tr><td>${key.replace(/t2/, 't₂').replace(/tz/, 't<sub>z</sub>').replace(/ty/, 't<sub>y</sub>')}</td><td>${value}</td></tr>`;
+      }
+      html += '</table>';
+
+      resultDiv.innerHTML = html;
+    }
+  </script>
+</section>
+
 
 
   <section>
