@@ -128,7 +128,7 @@
         return;
       }
 
-      status.textContent = `Showing ${modelType.replace(/([A-Z])/g, ' $1').toLowerCase()} parameters for ${material}:`;
+      status.textContent = `Showing ${modelType.replace(/([A-Z])/g, ' $1').toLowerCase()} Hubbard parameters for ${material}:`;
 
       let html = '<table border="1" cellpadding="5"><tr><th>Quantity</th><th>Value</th></tr>';
       for (const [key, value] of Object.entries(modelData)) {
