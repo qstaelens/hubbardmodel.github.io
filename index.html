@@ -124,7 +124,7 @@
       const modelData = materialDatabase[material][modelType];
 
       if (!modelType || !modelData || Object.keys(modelData).length === 0) {
-        status.textContent = `No data found for ${modelType.replace(/([A-Z])/g, ' $1').toLowerCase()} model of ${material}.`;
+        status.textContent = `No data found for the ${modelType.replace(/([A-Z])/g, ' $1').toLowerCase()} Hubbard model of ${material}.`;
         return;
       }
 
