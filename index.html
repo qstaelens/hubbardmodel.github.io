@@ -75,6 +75,32 @@
      <li><strong>\( V \)</strong>: Direct Coulomb interaction</li>
      <li><strong>\( K \)</strong>: Exchange interaction</li>
     </ul>
+
+    <p>This previous Hamiltonians corresponds to the <strong>one-band Hubbard model</strong>, which is sufficient to describe some correlated systems. However, in more complex materials such as transition metal oxides or systems with strong crystal field splitting <strong>multi-band models</strong> become necessary to accurately capture the low-energy physics.</p>
+
+    <p>The extended multi-band Hubbard Hamiltonian takes the form:</p>
+    
+    <div class="math">
+    \[
+    \mathcal{\hat{H}} = - \sum_{R,R',\sigma} \sum_{i,i'} t_{Ri,R'i'} \hat{c}_{Ri,\sigma}^\dagger \hat{c}_{R'i',\sigma} + \frac{1}{2} \sum_{R_i, R_j, R_k, R_l} \sum_{i,j,k,l} 
+    \hat{c}^\dagger_{R_i, i} \hat{c}_{R_j, j} U_{R_i,i; R_j, j; R_k, k; R_l, l} \hat{c}_{R_k, k}^\dagger \hat{c}_{R_l, l},
+    \]
+    </div>
+    
+    <p>where the interaction parameter \( U_{R_i,i;\,R_j,j;\,R_k,k;\,R_l,l} \) is given by:</p>
+    
+    <div class="math">
+    \[
+    U_{R_i,i;\,R_j,j;\,R_k,k;\,R_l,l} 
+    = \int d\mathbf{r} \, d \mathbf{r'} \,\phi_{R_i,i}^*(\mathbf{r})\,\phi_{R_j,j}^*(\mathbf{r'})\,\hat{\mathcal{H}}_U\,
+      \phi_{R_k,k}(\mathbf{r})\,\phi_{R_l,l}(\mathbf{r'}).
+    \]
+    </div>
+    
+    <p>The two-body operator \( \hat{\mathcal{H}}_U \) encapsulates more than just the bare Coulomb repulsion. Due to renormalization effects, such as screening by high-energy electrons, the effective interaction between low-energy degrees of freedom is modified. This results in a screened Coulomb interaction, often denoted \( W_r(\mathbf{r}, \mathbf{r}', \omega) \), which can be computed using constrained Random Phase Approximation (cRPA) techniques.</p>
+    
+
+    
   </section>
 
  <section>
