@@ -79,41 +79,64 @@
 
  <section>
   <h2>2. Search for Material Parameters</h2>
-  <p>Type a material name below to search for its Hubbard model parameters (e.g. t, U).</p>
-  <input type="text" id="materialInput" placeholder="Enter material name..." />
-  <button onclick="searchMaterial()">Search</button>
-  <p id="status">Enter full name like Sr2CuO3</p>
+  <p>Type a material name below to search for its Hubbard model parameters. Then select a model type (e.g. one-band, two-band).</p>
 
-  <!-- Display result here -->
+  <input type="text" id="materialInput" placeholder="Enter material name..." />
+  <select id="modelSelect">
+    <option value="">Select model type</option>
+    <option value="oneBand">One-band</option>
+    <option value="twoBand">Two-band</option>
+  </select>
+  <button onclick="searchMaterial()">Search</button>
+
+  <p id="status">Enter full name like Sr2CuO3 and select a model type.</p>
   <div id="result"></div>
 
   <script>
-    // Store data as an object with each material as a key
     const materialDatabase = {
-      "Sr2CuO3": { t: 0.49, U: 3.56, V: 1.09, K: -0.066, t2: 0.078, tz: 0.032, ty: 0.0069 },
-      "SrBaCuO3": { t: 0.48, U: 3.14, V: 1.04, K: -0.077, t2: 0.076, tz: 0.027, ty: -0.0028 },
-      "Ba2CuO3": { t: 0.48, U: 2.97, V: 1.00, K: -0.089, t2: 0.074, tz: 0.021, ty: -0.011 }
-      // Add more materials here as needed
+      "Sr2CuO3": {
+        oneBand: { t: 0.49, U: 3.56, V: 1.09, K: -0.066, t2: 0.078, tz: 0.032, ty: 0.0069 },
+        twoBand: {}
+      },
+      "SrBaCuO3": {
+        oneBand: { t: 0.48, U: 3.14, V: 1.04, K: -0.077, t2: 0.076, tz: 0.027, ty: -0.0028 },
+        twoBand: {}
+      },
+      "Ba2CuO3": {
+        oneBand: { t: 0.48, U: 2.97, V: 1.00, K: -0.089, t2: 0.074, tz: 0.021, ty: -0.011 },
+        twoBand: {}
+      }
     };
 
     function searchMaterial() {
-      const input = document.getElementById('materialInput').value.trim();
+      const material = document.getElementById('materialInput').value.trim();
+      const modelType = document.getElementById('modelSelect').value;
       const resultDiv = document.getElementById('result');
       const status = document.getElementById('status');
-      const data = materialDatabase[input];
 
       resultDiv.innerHTML = '';
 
-      if (!data) {
-        status.textContent = `Material "${input}" not found. Try e.g. Sr2CuO3.`;
+      if (!materialDatabase[material]) {
+        status.textContent = `Material "${material}" not found. Try e.g. Sr2CuO3.`;
         return;
       }
 
-      status.textContent = `Showing parameters for ${input}:`;
+      const modelData = materialDatabase[material][modelType];
+
+      if (!modelType || !modelData || Object.keys(modelData).length === 0) {
+        status.textContent = `No data found for ${modelType.replace(/([A-Z])/g, ' $1').toLowerCase()} model of ${material}.`;
+        return;
+      }
+
+      status.textContent = `Showing ${modelType.replace(/([A-Z])/g, ' $1').toLowerCase()} parameters for ${material}:`;
 
       let html = '<table border="1" cellpadding="5"><tr><th>Quantity</th><th>Value</th></tr>';
-      for (const [key, value] of Object.entries(data)) {
-        const formattedKey = key.replace(/t2/, 't<sub>2</sub>').replace(/tz/, 't<sub>z</sub>').replace(/ty/, 't<sub>y</sub>');
+      for (const [key, value] of Object.entries(modelData)) {
+        const formattedKey = key
+          .replace(/^t2$/, 't<sub>2</sub>')
+          .replace(/^tz$/, 't<sub>z</sub>')
+          .replace(/^ty$/, 't<sub>y</sub>');
+        
         const formattedValue = typeof value === 'number' ? value.toFixed(2) : value;
         html += `<tr><td>${formattedKey}</td><td>${formattedValue}</td></tr>`;
       }
@@ -122,6 +145,7 @@
     }
   </script>
 </section>
+
 
 
 
