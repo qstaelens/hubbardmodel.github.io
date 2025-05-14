@@ -170,7 +170,7 @@
           .replace(/^tz$/, 't<sub>z</sub>')
           .replace(/^ty$/, 't<sub>y</sub>');
         
-        const formattedValue = typeof value === 'number' ? value.toFixed(2) : value;
+        const formattedValue = typeof value === 'number' ? value.toFixed(4) : value;
         html += `<tr><td>${formattedKey}</td><td>${formattedValue}</td></tr>`;
       }
       html += '</table>';
