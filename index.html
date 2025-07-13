@@ -116,7 +116,7 @@
 
 
 
- <section>
+<section>
   <h2>2. Search for Material Parameters</h2>
   <p>Type a material name below to search for its Hubbard model parameters. Then select a model type (e.g. one-band, two-band ...).</p>
 
@@ -134,19 +134,47 @@
   <script>
     const materialDatabase = {
       "Sr2CuO3": {
-        "one-band": { t: 0.49, U: 3.56, V: 1.09, K: -0.066, t2: 0.078 },
+        "one-band": {
+          t: 0.49,
+          U: 3.56,
+          V: 1.09,
+          K: -0.066,
+          t2: 0.078,
+          sources: [
+            {
+              key: "vrancken2025",
+              title: "Quantitative description of strongly correlated materials by combining downfolding techniques and tensor networks",
+              authors: "D. Vrancken, S. Ganne, D. Verraes, T. Braeckevelt, L. Devos, J. Haegeman, V. Van Speybroeck",
+              year: 2025,
+              url: "https://arxiv.org/abs/2502.19588"
+            }
+          ]
+        },
         "two-band": {}
       },
       "SrBaCuO3": {
-        "one-band": { t: 0.48, U: 3.14, V: 1.04, K: -0.077, t2: 0.076 },
+        "one-band": {
+          t: 0.48,
+          U: 3.14,
+          V: 1.04,
+          K: -0.077,
+          t2: 0.076,
+          sources: [] // add sources here
+        },
         "two-band": {}
       },
       "Ba2CuO3": {
-        "one-band": { t: 0.48, U: 2.97, V: 1.00, K: -0.089, t2: 0.074 },
+        "one-band": {
+          t: 0.48,
+          U: 2.97,
+          V: 1.00,
+          K: -0.089,
+          t2: 0.074,
+          sources: [] // add sources here
+        },
         "two-band": {}
       }
     };
-
 
     function searchMaterial() {
       const material = document.getElementById('materialInput').value.trim();
@@ -162,7 +190,7 @@
       }
   
       if (!modelType) {
-        status.textContent = `Material "${material}" found. Please select a model type (e.g. one-band or two-band).`;
+        status.textContent = `Material "${material}" found. Please select a model type.`;
         return;
       }
     
@@ -177,6 +205,7 @@
     
       let html = '<table border="1" cellpadding="5"><tr><th>Quantity</th><th>Value</th></tr>';
       for (const [key, value] of Object.entries(modelData)) {
+        if (key === 'sources') break;
         const formattedKey = key
           .replace(/^t2$/, 't<sub>2</sub>')
           .replace(/^tz$/, 't<sub>z</sub>')
@@ -186,11 +215,23 @@
         html += `<tr><td>${formattedKey}</td><td>${formattedValue}</td></tr>`;
       }
       html += '</table>';
+
+      // Append sources if available
+      const sources = modelData.sources || [];
+      if (sources.length) {
+        html += '<h3>Sources</h3><ul>';
+        sources.forEach(src => {
+          html += `<li><a href="${src.url}" target="_blank">${src.key}</a>: ${src.title} (${src.year}) by ${src.authors}</li>`;
+        });
+        html += '</ul>';
+      }
+
       resultDiv.innerHTML = html;
     }
 
   </script>
 </section>
+
 
 
 
