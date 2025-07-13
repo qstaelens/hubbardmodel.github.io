@@ -120,15 +120,13 @@
   <h2>2. Search for Material Parameters</h2>
   <p>Type a material name below to search for its Hubbard model parameters. Then select a model type (e.g. one-band, two-band ...).</p>
 
-  <input type="text" id="materialInput" placeholder="Enter material name..." style="width: 200px; margin-right: 10px;" />
-  <select id="modelSelect" style="margin-right: 10px;">
+  <input type="text" id="materialInput" placeholder="Enter material name" style="width: 200px; margin-right: 10px;" />
+  <select id="modelSelect" style="margin-right: 12px;">
     <option value="">Select model type</option>
     <option value="one-band">One-band</option>
     <option value="two-band">Two-band</option>
   </select>
   <button onclick="searchMaterial()">Search</button>
-
-  <p id="status">Enter full name like Sr2CuO3 and select a model type.</p>
   <div id="result"></div>
 
   <script>
