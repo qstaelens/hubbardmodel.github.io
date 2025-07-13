@@ -65,7 +65,7 @@
     <p>One can also use the extended Hubbard Hamiltonian, given by:</p>
     <div class="math">
       \[
-      \hat{H} = -\sum_{\langle R_{i},R_{j} \rangle, \sigma} t_{R_{i}R_{j}} c^\dagger_{R_{i}\sigma} c_{R_{j}\sigma}
+      \hat{H} = -\sum_{\langle R_{i},R_{j} \rangle, \sigma} t_{R_{i}R_{j}} c^\dagger_{R_{i},\sigma} c_{R_{j},\sigma}
       + U \sum_{R_{i}} n_{R_{i}\uparrow} n_{R_{i}\downarrow}
       + V \sum_{\langle R_{i},R_{j} \rangle} n_{R_{i}} n_{R_{j}}
       + K \sum_{\langle R_{i},R_{j} \rangle} \vec{S}_{R_{i}} \cdot \vec{S}_{R_{j}}
@@ -85,7 +85,7 @@
   
     <div class="math">
     \[
-    \hat{H} = - \sum_{R_i,R_j,\sigma} \sum_{i,i'} t_{R_ii,R_jj} \hat{c}_{R_ii,\sigma}^\dagger \hat{c}_{R_jj,\sigma} + \frac{1}{2} \sum_{R_i, R_j, R_k, R_l} \sum_{i,j,k,l} 
+    \hat{H} = - \sum_{R_i,R_j,\sigma} \sum_{i,j} t_{R_i,i;R_j,j} \hat{c}_{R_i,i,\sigma}^\dagger \hat{c}_{R_j,j,\sigma} + \frac{1}{2} \sum_{R_i, R_j, R_k, R_l} \sum_{i,j,k,l} 
     \hat{c}^\dagger_{R_i, i} \hat{c}_{R_j, j} U_{R_i,i; R_j, j; R_k, k; R_l, l} \hat{c}_{R_k, k}^\dagger \hat{c}_{R_l, l}
     \]
     </div>
