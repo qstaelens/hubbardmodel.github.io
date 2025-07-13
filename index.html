@@ -52,23 +52,23 @@
     <p>The model captures two key physical effects: the kinetic energy of electrons hopping between sites and the on-site Coulomb repulsion when two electrons occupy the same site.</p>
     <div class="math">
       \[
-      \hat{H} = -t \sum_{\langle i,j \rangle, \sigma} c^\dagger_{i\sigma} c_{j\sigma} + U \sum_i n_{i\uparrow} n_{i\downarrow}
+      \hat{H} = -t \sum_{\langle R_i,R_j \rangle, \sigma} c^\dagger_{R_i\sigma} c_{R_j\sigma} + U \sum_R_i n_{R_i\uparrow} n_{R_j\downarrow}
       \]
     </div>
     <p>With:</p>
     <ul>
       <li><strong>\( t \)</strong>: Hopping parameter (kinetic term)</li>
       <li><strong>\( U \)</strong>: On-site Coulomb repulsion</li>
-      <li><strong>\( c^\dagger_{i\sigma}, c_{i\sigma} \)</strong>: Fermionic creation and annihilation operators for electrons with spin \( \sigma \) at site \( i \)</li>
-      <li><strong>\( n_{i\sigma} \)</strong>: Number operator for electrons with spin \( \sigma \) at site \( i \)</li>
+      <li><strong>\( c^\dagger_{R_i\sigma}, c_{R_i\sigma} \)</strong>: Fermionic creation and annihilation operators for electrons with spin \( \sigma \) at site \( R_i \)</li>
+      <li><strong>\( n_{R_i\sigma} \)</strong>: Number operator for electrons with spin \( \sigma \) at site \( R_i \)</li>
     </ul>
     <p>One can also use the extended Hubbard Hamiltonian, given by:</p>
     <div class="math">
       \[
-      \hat{H} = -\sum_{\langle i,j \rangle, \sigma} t_{ij} c^\dagger_{i\sigma} c_{j\sigma}
-      + U \sum_i n_{i\uparrow} n_{i\downarrow}
-      + V \sum_{\langle i,j \rangle} n_i n_j
-      + K \sum_{\langle i,j \rangle} \vec{S}_i \cdot \vec{S}_j
+      \hat{H} = -\sum_{\langle R_i,R_j \rangle, \sigma} t_{R_iR_j} c^\dagger_{R_i\sigma} c_{R_j\sigma}
+      + U \sum_R_i n_{R_i\uparrow} n_{R_i\downarrow}
+      + V \sum_{\langle R_i,R_j \rangle} n_R_i n_R_j
+      + K \sum_{\langle R_i,R_j \rangle} \vec{S}_R_i \cdot \vec{S}_R_j
       \]
     </div>
     <p>With:</p>
@@ -85,13 +85,13 @@
   
     <div class="math">
     \[
-    \hat{H} = - \sum_{R,R',\sigma} \sum_{i,i'} t_{Ri,R'i'} \hat{c}_{Ri,\sigma}^\dagger \hat{c}_{R'i',\sigma} + \frac{1}{2} \sum_{R_i, R_j, R_k, R_l} \sum_{i,j,k,l} 
+    \hat{H} = - \sum_{R_i,R_j,\sigma} \sum_{i,i'} t_{R_ii,R_jj} \hat{c}_{R_ii,\sigma}^\dagger \hat{c}_{R_jj,\sigma} + \frac{1}{2} \sum_{R_i, R_j, R_k, R_l} \sum_{i,j,k,l} 
     \hat{c}^\dagger_{R_i, i} \hat{c}_{R_j, j} U_{R_i,i; R_j, j; R_k, k; R_l, l} \hat{c}_{R_k, k}^\dagger \hat{c}_{R_l, l}
     \]
     </div>
     <p>With:</p>
     <ul>
-      <li><strong>\( R, R', R_i \)</strong>: Different lattice sites</li>
+      <li><strong>\( R_i, R_j \)</strong>: Different lattice sites</li>
       <li><strong>\( i, j, k, l \)</strong>: Different bands or Maximally Localized Wannier Functions (MLWFs)</li>
     </ul>
   
